@@ -83,8 +83,7 @@ class CategoryController extends Controller
             return $this->errorResponse('Invalid data', 422, $validator->errors());
         }
 
-        $category = Category::findOrFail($id)
-            ->update($request->all()); 
+        Category::findOrFail($id)->update($request->all()); 
 
         return $this->successResponse([], 'Category updated successfully');
     }
