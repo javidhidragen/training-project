@@ -25,4 +25,5 @@ Route::group([
 
 Route::group(['middleware' => 'auth:api'], function() {
     Route::resource('categories', CategoryController::class);
+    Route::post('import', [CategoryController::class, 'importCSV']);
 });

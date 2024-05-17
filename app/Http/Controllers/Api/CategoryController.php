@@ -97,4 +97,15 @@ class CategoryController extends Controller
 
         return $this->successResponse($category, 'Category deleted successfully');
     }
+
+    public function importCSV(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,csv',
+        ]);
+
+        Excel::import(new CategoryImport, $request->file('file'));
+    
+        return $this->successResponse('CSV file imported successfully');
+    }
 }
